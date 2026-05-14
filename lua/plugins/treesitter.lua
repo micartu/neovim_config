@@ -1,7 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
-
     --- opts = { ensure_installed = {  } },
     ensure_installed = {
       "hyprlang",

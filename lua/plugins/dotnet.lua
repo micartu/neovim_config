@@ -1,3 +1,4 @@
+-- setups dotnet enviroment roslyn
 return {
   {
     "seblyng/roslyn.nvim",

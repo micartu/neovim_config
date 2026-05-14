@@ -1,27 +1,27 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
---- enable showing relative numbers
-vim.opt.relativenumber = true
---- config rsolyn for csharp and dotnet
-vim.lsp.config("roslyn", {})
-
-------------------------
----- CUSTOM MACROS -----
-------------------------
-local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
-
-vim.fn.setreg("p", "^ipublic " .. esc .. "j^")
-
-------------------------
----- SETUP PLUGINS -----
-------------------------
-
+require("config.lsp")
+require("config.klayout")
+require("config.macros")
+---------------------------
+----  SETUP PLUGINS -------
+-- WHICH ARE TROUBLESOME --
+---------------------------
 return {
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
       require("configs.conform")
+      require("conform").setup({
+        formatters_by_ft = {
+          cs = { "csharpier" },
+          lua = { "stylua" },
+          python = { "isort", "black" },
+          rust = { "rustfmt", lsp_format = "fallback" },
+          javascript = { "prettierd", "prettier", stop_after_first = true },
+        },
+      })
     end,
   },
 }

@@ -1,3 +1,4 @@
+-- setups mason for different languages
 return {
   "mason-org/mason.nvim",
   opts = {
@@ -23,7 +24,7 @@ return {
 
       -- !
       "roslyn",
-      "rzls",
+      -- "rzls",
       -- "csharp-language-server",
       -- "omnisharp",
     },
